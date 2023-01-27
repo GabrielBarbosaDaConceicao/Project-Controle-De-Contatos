@@ -22,7 +22,9 @@ namespace ControleDeContatos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddEntityFrameworkSqlServer()
+
                 .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
         }

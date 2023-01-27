@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeContatos.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20220125195118_CriandoTabelaContatos")]
-    partial class CriandoTabelaContatos
+    [Migration("20230127185547_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,13 +28,18 @@ namespace ControleDeContatos.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Celular")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
