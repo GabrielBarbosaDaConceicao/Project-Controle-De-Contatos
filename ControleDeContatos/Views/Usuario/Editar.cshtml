@@ -1,0 +1,45 @@
+﻿@model UsuarioModel
+@{
+    ViewData["Title"] = "Editar usuario";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Editar usuario</h1>
+</div>
+
+
+<form asp-controller="Usuario" asp-action="Editar" methotd="post">
+
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="nome" class="col-form-label">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do usuario">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="col-form-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail do usuario">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="form-group">
+        <label for="login" class="col-form-label">Login</label>
+        <input type="text" asp-for="Login" class="form-control" placeholder="Digite o login do usuario">
+        @Html.ValidationMessageFor(x => x.Login)
+    </div>
+
+    <div class="form-group">
+        <label for="login" class="col-form-label">Perfil</label>
+        <select asp-for="Perfil" class="form-control">
+            <option value="">Selecione</option>
+            <option value="1">Administrador</option>
+            <option value="2">Padrão</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Perfil)
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Editar</button>
+    <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Usuario" role="button">Voltar</a>
+
+</form>
